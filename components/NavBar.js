@@ -6,13 +6,13 @@ export default function NavBar() {
   console.log(router);
   return (
     <nav>
-      <Link href="/">
+      <Link href="/next-js/">
         <a className={router.pathname === "/" ? "active" : ""}>Home</a>
       </Link>
-      <Link href="/about">
+      <Link href="/next-js/about">
         <a className={router.pathname === "/about" ? "active" : ""}>About</a>
       </Link>
-      <Link href="/test">
+      <Link href="/next-js/test">
         <a className={router.pathname === "/test" ? "active" : ""}>Test</a>
       </Link>
       <style jsx>{`
