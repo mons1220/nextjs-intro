@@ -1,4 +1,4 @@
-import test from "../data.json";
+import test from "../components/data.json";
 import loadable from "@loadable/component";
 
 const ForceGraph = loadable(() => import("../components/graph"));

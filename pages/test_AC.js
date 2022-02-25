@@ -1,6 +1,6 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
-import test from "../data.json";
+import test from "../components/data.json";
 
 function Page() {
   var node_new = new Array();
