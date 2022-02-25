@@ -6,18 +6,28 @@ export default function NavBar() {
   console.log(router);
   return (
     <nav>
-      <Link href="/nextjs-intro/">
+      <Link href="/">
         <a className={router.pathname === "/" ? "active" : ""}>Home</a>
       </Link>
-      <Link href="/nextjs-intro/about">
+      <Link href="/about">
         <a className={router.pathname === "/about" ? "active" : ""}>About</a>
       </Link>
-      <Link href="/nextjs-intro/test">
-        <a className={router.pathname === "/test" ? "active" : ""}>Test</a>
+      <Link href="/test_AC">
+        <a className={router.pathname === "/test_AC" ? "active" : ""}>
+          test_AC
+        </a>
+      </Link>
+      <Link href="/test_RFG">
+        <a className={router.pathname === "/test_RFG" ? "active" : ""}>
+          test_RFG
+        </a>
       </Link>
       <style jsx>{`
         nav {
           background-color: tomato;
+          display: flex;
+          justify-content: space-evenly;
+          padding: 10px 0;
         }
         a {
           text-decoration: none;
