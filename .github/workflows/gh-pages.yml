@@ -30,7 +30,7 @@ jobs:
 
       # package.jsonに基づき依存パッケージをインストールする
       - name: install
-        run: npm ci --frozen-lockfile
+        run: npm ci #--frozen-lockfile
 
       # Next.jsアプリをビルドする
       # プロジェクトルート直下に.nextディレクトリができる
