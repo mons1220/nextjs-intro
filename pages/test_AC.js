@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import ReactECharts from "echarts-for-react";
 import test from "../components/data.json";

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import test from "../components/data.json";
 import loadable from "@loadable/component";
 
