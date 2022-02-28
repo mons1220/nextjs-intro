@@ -9,6 +9,9 @@ export default function App() {
     <div>
       <ForceGraph
         graphData={test}
+        width={520}
+        height={800}
+        nodeAutoColorBy="group"
         linkDirectionalParticles={2}
         linkDirectionalParticleWidth={3}
         linkDirectionalParticleColor={() => "red"}
