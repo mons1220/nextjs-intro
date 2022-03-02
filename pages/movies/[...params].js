@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+/* eslint-disable */
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
