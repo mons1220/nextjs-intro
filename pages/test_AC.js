@@ -1,39 +1,13 @@
 /* eslint-disable */
 import React from "react";
 import ReactECharts from "echarts-for-react";
-import test from "../components/data.json";
 
-function Page() {
-  var node_new = new Array();
-  test.nodes.forEach(function (element) {
-    var newelement = {};
-    newelement["name"] = element["id"];
-    newelement["value"] = 1;
-    newelement["category"] = element["group"];
-
-    node_new.push(newelement);
-  });
-
-  var categories_list = new Array();
-  for (var i = 0; i < 10; i++) {
-    var newelement = {};
-    newelement["name"] = i + 1;
-    newelement["keyword"] = {};
-    newelement["base"] = i + 1;
-    categories_list.push(newelement);
-  }
-
-  const remiserable = {
-    type: "force",
-    categories: categories_list,
-    nodes: node_new,
-    links: test.links,
-  };
-
+export default function Page({ results }) {
   const option = {
     legend: {
-      data: [...Array(10).keys()].map(String),
+      data: results.categories,
     },
+
     series: [
       {
         type: "graph",
@@ -46,16 +20,16 @@ function Page() {
           },
         },
         draggable: true,
-        data: remiserable.nodes,
-        categories: remiserable.categories,
+        data: results.nodes,
+        categories: results.categories,
         force: {
           initLayout: "circular",
           // repulsion: 20,
-          edgeLength: 50,
-          repulsion: 50,
-          gravity: 0.01,
+          edgeLength: 100,
+          repulsion: 200,
+          gravity: 0.001,
         },
-        edges: remiserable.links,
+        edges: results.links,
       },
     ],
   };
@@ -70,4 +44,21 @@ function Page() {
   );
 }
 
-export default Page;
+// Server side에서만 돌아가는 code 작성
+// function 이름이 중요
+// _app.js 에서 pageProps 으로 넣어주는 부분이 이 함수의 return값.
+export async function getServerSideProps() {
+  const results = await (
+    await fetch(
+      `https://echarts.apache.org/examples/data/asset/data/les-miserables.json`
+    )
+  ).json();
+  results.nodes.forEach(function (node) {
+    node.symbolSize = node.symbolSize / 2;
+  });
+  return {
+    props: {
+      results,
+    },
+  };
+}

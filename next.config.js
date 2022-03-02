@@ -5,6 +5,9 @@
 const API_KEY = "ce6980aaa005bc1bce0b56e0263e3351";
 
 const nextConfig = {
+  images: {
+    domains: ["image.tmdb.org"],
+  },
   reactStrictMode: true,
   // 새로운 address로 리다이렉트 하는 방법
   async redirects() {
@@ -23,6 +26,10 @@ const nextConfig = {
       {
         source: "/api/movies",
         destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      },
+      {
+        source: "/api/movies/:id",
+        destination: `https://api.themoviedb.org/3/movie/:id?api_key=${API_KEY}`,
       },
     ];
   },
