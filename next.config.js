@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 //.env 파일에 API_KEY 숨기기
-// const API_KEY = process.env.API_KEY;
-const API_KEY = "ce6980aaa005bc1bce0b56e0263e3351";
+const API_KEY = process.env.API_KEY;
 
 const nextConfig = {
   images: {

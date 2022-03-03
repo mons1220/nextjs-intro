@@ -26,6 +26,11 @@ export default function NavBar() {
             test_RFG
           </a>
         </Link>
+        <Link href="/neo4j_auradb">
+          <a className={router.pathname === "/neo4j_auradb" ? "active" : ""}>
+            neo4j_aura
+          </a>
+        </Link>
       </div>
       <style jsx>{`
         nav {

@@ -9,7 +9,7 @@ export default function App({ results }) {
       <ForceGraph
         graphData={results}
         width={520}
-        height={800}
+        height={600}
         nodeAutoColorBy="category"
         linkDirectionalParticles={2}
         linkDirectionalParticleWidth={3}
