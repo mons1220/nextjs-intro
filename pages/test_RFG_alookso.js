@@ -39,7 +39,7 @@ export default function App({ results }) {
         nodeThreeObject={(node) => {
           const sprite = new SpriteText(node.id_name);
           sprite.color = node.color;
-          sprite.textHeight = 8;
+          sprite.textHeight = 9;
           return sprite;
         }}
         linkDirectionalParticles={1}
@@ -51,7 +51,6 @@ export default function App({ results }) {
       <style jsx>{`
         .canvas {
           display: flex;
-          gap: 10px;
           flex-direction: column;
           align-items: center;
           padding-top: 20px;
