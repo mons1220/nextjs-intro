@@ -31,6 +31,13 @@ export default function NavBar() {
             neo4j_aura
           </a>
         </Link>
+        <Link href="/test_RFG_alookso">
+          <a
+            className={router.pathname === "/test_RFG_alookso" ? "active" : ""}
+          >
+            test_alookso
+          </a>
+        </Link>
       </div>
       <style jsx>{`
         nav {

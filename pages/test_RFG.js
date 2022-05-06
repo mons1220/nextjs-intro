@@ -5,7 +5,7 @@ const ForceGraph = loadable(() => import("../components/graph"));
 
 export default function App({ results }) {
   return (
-    <div>
+    <div className="canvas">
       <ForceGraph
         graphData={results}
         width={520}
@@ -15,6 +15,16 @@ export default function App({ results }) {
         linkDirectionalParticleWidth={3}
         linkDirectionalParticleColor={() => "red"}
       />
+      <style jsx>{`
+        .canvas {
+          display: flex;
+          gap: 10px;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 20px;
+          padding-bottom: 10px;
+        }
+      `}</style>
     </div>
   );
 }
