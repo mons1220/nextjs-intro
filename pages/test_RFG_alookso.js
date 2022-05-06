@@ -1,5 +1,7 @@
 /* eslint-disable */
 import loadable from "@loadable/component";
+// import { useCallback, useRef } from "react/cjs/react.production.min";
+import React from "react";
 import SpriteText from "three-spritetext";
 // import test from "../G_user.json";
 
@@ -7,13 +9,32 @@ const ForceGraph = loadable(() => import("../components/graph"));
 
 export default function App({ results }) {
   const jsonData = require("../G_user.json");
-  console.log(jsonData);
+  //   console.log(jsonData);
+
+  const { useRef, useCallback } = React;
+  const fgRef = useRef();
+  const handleClick = useCallback(
+    (node) => {
+      // Aim at node from outside it
+      const distance = 40;
+      const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+
+      fgRef.current.cameraPosition(
+        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // new position
+        node, // lookAt ({ x, y, z })
+        3000 // ms transition duration
+      );
+    },
+    [fgRef]
+  );
+
   return (
     <div className="canvas">
       <ForceGraph
+        ref={fgRef}
         graphData={jsonData}
-        width={1000}
-        height={750}
+        width={520}
+        height={600}
         nodeAutoColorBy="category"
         nodeThreeObject={(node) => {
           const sprite = new SpriteText(node.id_name);
@@ -24,6 +45,8 @@ export default function App({ results }) {
         linkDirectionalParticles={1}
         linkDirectionalParticleWidth={1}
         linkDirectionalParticleColor={() => "red"}
+        enableNodeDrag={false}
+        onNodeClick={handleClick}
       />
       <style jsx>{`
         .canvas {
